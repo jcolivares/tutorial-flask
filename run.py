@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
+from markupsafe import escape
+
 app = Flask(__name__)
 
 posts = []
@@ -30,6 +32,13 @@ def show_signup_form():
 
     return render_template("signup_form.html")
 
+
+
+@app.route("/hello")
+def hello():
+    name = request.args.get("name", "Flask")
+    return f"Hello {name}"
+    #return f"Hello, {escape(name)}!"
 
 """
 if __name__ == "__main__":
