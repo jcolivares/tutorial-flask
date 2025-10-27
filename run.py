@@ -37,8 +37,7 @@ def show_signup_form():
 @app.route("/hello")
 def hello():
     name = request.args.get("name", "Flask")
-    return f"Hello {name}"
-    #return f"Hello, {escape(name)}!"
+    return f"Hello, {escape(name)}!"
 
 """
 if __name__ == "__main__":
