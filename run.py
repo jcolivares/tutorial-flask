@@ -16,5 +16,7 @@ def show_post(slug):
 def post_form(post_id=None):
     return render_template("admin/post_form.html", post_id=post_id)
 
+"""
 if __name__ == "__main__":
     app.run(debug=True, port=8080)
+"""
