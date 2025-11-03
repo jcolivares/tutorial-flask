@@ -11,7 +11,8 @@ posts = []
 
 @app.route("/")
 def index():
-    return render_template("index.html", num_posts=len(posts))
+    return render_template("index.html", posts=posts)
+
 
 @app.route("/p/<string:slug>/")
 def show_post(slug):
