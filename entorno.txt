@@ -18,3 +18,5 @@ flask --app run.py run --port 8080
 
 pip install Flask-WTF
 pip install email-validator
+
+pip install flask-login
