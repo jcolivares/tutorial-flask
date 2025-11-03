@@ -4,6 +4,8 @@ from markupsafe import escape
 from forms import SignupForm, PostForm
 from flask_login import LoginManager
 
+from models import users, User, get_user
+
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = '7110c8ae51a4b5af97be6534caef90e4bb9bdcb3380af008f90b23a5d1616bf319bc298105da20fe'
@@ -60,7 +62,11 @@ def hello():
     name = request.args.get("name", "Flask")
     return f"Hello, {escape(name)}!"
 
-"""
-if __name__ == "__main__":
-    app.run(debug=True, port=8080)
-"""
+
+@login_manager.user_loader
+def load_user(user_id):
+    for user in users:
+        if user.id == int(user_id):
+            return user
+    return None
+
