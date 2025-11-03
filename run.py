@@ -20,20 +20,22 @@ def show_post(slug):
 def post_form(post_id=None):
     return render_template("admin/post_form.html", post_id=post_id)
 
+
+from forms import SignupForm
+
 @app.route("/signup/", methods=["GET", "POST"])
 def show_signup_form():
-    if request.method == 'POST':
-        name = request.form['name']
-        email = request.form['email']
-        password = request.form['password']
+    form = SignupForm()
+    if form.validate_on_submit():
+        name = form.name.data
+        email = form.email.data
+        password = form.password.data
 
         next = request.args.get('next', None)
         if next:
             return redirect(next)
         return redirect(url_for('index'))
-
-    return render_template("signup_form.html")
-
+    return render_template("signup_form.html", form=form)
 
 
 @app.route("/hello")
