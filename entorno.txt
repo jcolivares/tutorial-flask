@@ -20,3 +20,10 @@ pip install Flask-WTF
 pip install email-validator
 
 pip install flask-login
+
+pip install flask-sqlalchemy
+pip install pymysql
+
+pip install python-slugify
+
+export FLASK_APP=run:app
